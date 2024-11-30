@@ -14,3 +14,4 @@ docs/swagger-ui*
 docs/mercure.html
 .phpunit.result.cache
 docs/swagger/swagger-inlined.json
+.vercel
