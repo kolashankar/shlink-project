@@ -28,10 +28,26 @@
       },
       "scripts": [
         {
-          "_script" : ["chmod -R", "+x", "/app/data/log"],
+          "_script" : ["mkdir", "-p", "/var/task/user/data/log"],
+          "_stage" : ["ready"],
+          "_optional" : true
+         },
+         {
+          "_script" : ["mkdir", "-p", "/var/task/user/data/cache"],
+          "_stage" : ["ready"],
+          "_optional" : true
+         },
+         {
+          "_script" : ["chmod", "-R", "+x", "/var/task/user/data/log"],
+          "_stage" : ["ready"],
+          "_optional" : true
+         },
+         {
+          "_script" : ["chmod", "-R", "+x", "/var/task/user/data/cache"],
           "_stage" : ["ready"],
           "_optional" : true
          }
        ]
      }
   }
+  
