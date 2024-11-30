@@ -1,13 +1,16 @@
 {
     "version": 2,
+    "env": {
+      "LD_LIBRARY_PATH": "/usr/lib64:/usr/lib"
+    },
     "builds": [
       {
         "src": "api/index.php",
-        "use": "vercel-php@0.3.6"
+        "use": "vercel-php@latest"
       },
       {
         "src": "public/**/*.php",
-        "use": "vercel-php@0.3.6"
+        "use": "vercel-php@latest"
       },
       {
         "src": "public/**/*",
