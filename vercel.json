@@ -1,31 +1,37 @@
 {
     "version": 2,
-    "env": {
-      "LD_LIBRARY_PATH": "/usr/lib64:/usr/lib"
-    },
     "builds": [
       {
-        "src": "api/index.php",
-        "use": "vercel-php@latest"
-      },
-      {
-        "src": "public/**/*.php",
-        "use": "vercel-php@latest"
-      },
-      {
-        "src": "public/**/*",
-        "use": "@vercel/static"
+        "src": "public/index.php",
+        "use": "@vercel/php"
       }
     ],
     "routes": [
       {
-        "src": "/api/(.*)",
-        "dest": "/api/index.php"
-      },
-      {
         "src": "/(.*)",
         "dest": "/public/$1"
       }
-    ]
+    ],
+    "env": {
+      "DEFAULT_DOMAIN": "${DEFAULT_DOMAIN}",
+      "IS_HTTPS_ENABLED": "${IS_HTTPS_ENABLED}"
+    },
+    "functions": {
+      "*/*.php": {
+        "runtime": "@vercel/php@0.3.0"
+      }
+    },
+    "build": {
+      "env": {
+        "COMPOSER_HOME": "/app/composer",
+        "COMPOSER_CACHE_DIR": "/app/composer/cache"
+      },
+      "scripts": [
+        {
+          "_script" : ["chmod -R", "+x", "/app/data/log"],
+          "_stage" : ["ready"],
+          "_optional" : true
+         }
+       ]
+     }
   }
-  
