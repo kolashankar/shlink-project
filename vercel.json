@@ -6,14 +6,22 @@
         "use": "@vercel/php"
       },
       {
+        "src": "public/**/*.php",
+        "use": "@vercel/php"
+      },
+      {
         "src": "public/**/*",
         "use": "@vercel/static"
       }
     ],
     "routes": [
       {
+        "src": "/api/(.*)",
+        "dest": "/api/index.php"
+      },
+      {
         "src": "/(.*)",
-        "dest": "public/$1"
+        "dest": "/public/$1"
       }
     ]
   }
